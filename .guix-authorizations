@@ -1,0 +1,6 @@
+;; -*- mode: scheme; -*-
+(authorizations
+ (version 0))
+
+(("7322 F78A 115D B01A 20E8 5C05 9182 04EF 6BD1 EADC"
+  (name "Jacob Salzberg")))

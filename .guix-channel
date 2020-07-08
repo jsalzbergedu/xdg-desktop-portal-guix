@@ -1,0 +1,4 @@
+;; -*- mode: scheme; -*-
+(channel
+ (version 0)
+ (url "https://github.com/jsalzbergedu/xdg-desktop-portal-guix.git"))
