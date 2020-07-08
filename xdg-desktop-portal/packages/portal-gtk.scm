@@ -1,4 +1,4 @@
-(define-module (xdg-desktop-portal-gtk)
+(define-module (xdg-desktop-portal packages portal-gtk)
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix build-system gnu)
