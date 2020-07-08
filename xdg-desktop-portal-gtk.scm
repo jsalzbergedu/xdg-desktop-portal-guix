@@ -1,4 +1,4 @@
-(define-module (gnu packages xdg-portals)
+(define-module (xdg-desktop-portal-gtk)
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix build-system gnu)
@@ -36,7 +36,7 @@
    (build-system glib-or-gtk-build-system)
    (arguments
     `(#:configure-flags (list "--enable-libportal=no")
-      #:phases (modify-phases %standard-phases 
+      #:phases (modify-phases %standard-phases
 			      (add-after 'install 'create-desktop-portal-symlink
                                          ,create-desktop-portal-symlink))))
    (native-inputs `(("pkg-config" ,pkg-config)
