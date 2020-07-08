@@ -12,6 +12,17 @@
   #:use-module (gnu packages gtk)
   #:use-module (gnu packages gettext))
 
+(define-public create-desktop-portal-symlink
+  `(lambda* (#:key outputs #:allow-other-keys)
+     (let* ((out (assoc-ref outputs "out"))
+   	 (service-in (string-append out "/etc"))
+            (service-to (string-append service-in "/dbus-1"))
+            (service-from (string-append out "/share/dbus-1")))
+          (mkdir-p service-in)
+          (symlink service-from service-to)
+          #t)))
+
+
 (define-public xdg-desktop-portal
   (package
    (name "xdg-desktop-portal")
@@ -24,8 +35,10 @@
               "1nmrmxmsy9l1b8yshxkhwb16wxyx8vslflrbh5aayj2yjad9qg48"))))
    (build-system glib-or-gtk-build-system)
    (arguments
-    `(#:configure-flags (list
-                         "--enable-libportal=no")))
+    `(#:configure-flags (list "--enable-libportal=no")
+      #:phases (modify-phases %standard-phases 
+			      (add-after 'install 'create-desktop-portal-symlink
+                                         ,create-desktop-portal-symlink))))
    (native-inputs `(("pkg-config" ,pkg-config)
                     ("glib:bin" ,glib "bin")
                     ("fontconfig" ,fontconfig)
@@ -50,6 +63,11 @@
              (base32
               "0xiggqjp51a9nc1js9rggljwx3apqrnmmnf6shcp2zi411kd2vwm"))))
    (build-system glib-or-gtk-build-system)
+   (arguments
+    `(#:phases
+      (modify-phases %standard-phases 
+                     (add-after 'install 'create-desktop-portal-symlink
+			 ,create-desktop-portal-symlink))))
    (native-inputs `(("pkg-config" ,pkg-config)
                     ("glib" ,glib)
                     ("xdg-desktop-portal" ,xdg-desktop-portal)
