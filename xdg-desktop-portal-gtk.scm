@@ -80,5 +80,3 @@
     "xdg-desktop-portal-gtk provides a GTK+/GNOME implementation for the desktop-agnostic xdg-desktop-portal service. This allows sandboxed applications to request services from outside the sandbox using GTK+ GUIs (app chooser, file chooser, print dialog) or using GNOME services (session manager, screenshot provider). ")
    (home-page "https://github.com/flatpak/xdg-desktop-portal-gtk")
    (license license:lgpl2.1+)))
-
-xdg-desktop-portal-gtk
